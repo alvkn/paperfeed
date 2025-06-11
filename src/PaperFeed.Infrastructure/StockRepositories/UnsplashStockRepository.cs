@@ -40,7 +40,7 @@ public class UnsplashStockRepository : IImageStockRepository
 
         _logger.LogInformation("Got random photo with id {imageId}", photo.Id);
 
-        return new StockImage(photo.Id, photo.Urls.Small, UnsplashPhotoPagePrefix + photo.Id);
+        return new StockImage(photo.Id, photo.Urls.Full, UnsplashPhotoPagePrefix + photo.Id);
     }
 
     public async Task MarkAsDownloaded(string imageId, CancellationToken cancellationToken)
