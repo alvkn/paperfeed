@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaperFeed", "PaperFeed\PaperFeed.csproj", "{75A18BFA-17EE-465E-866F-0F8102404473}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaperFeed.Infrastructure", "PaperFeed.Infrastructure\PaperFeed.Infrastructure.csproj", "{3C887C7F-5285-425F-95CA-4576177C830A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaperFeed.Application", "PaperFeed.Application\PaperFeed.Application.csproj", "{86070904-5865-4722-BE23-D4D8A05191CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75A18BFA-17EE-465E-866F-0F8102404473}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75A18BFA-17EE-465E-866F-0F8102404473}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75A18BFA-17EE-465E-866F-0F8102404473}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75A18BFA-17EE-465E-866F-0F8102404473}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C887C7F-5285-425F-95CA-4576177C830A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C887C7F-5285-425F-95CA-4576177C830A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C887C7F-5285-425F-95CA-4576177C830A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C887C7F-5285-425F-95CA-4576177C830A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86070904-5865-4722-BE23-D4D8A05191CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86070904-5865-4722-BE23-D4D8A05191CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86070904-5865-4722-BE23-D4D8A05191CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86070904-5865-4722-BE23-D4D8A05191CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
