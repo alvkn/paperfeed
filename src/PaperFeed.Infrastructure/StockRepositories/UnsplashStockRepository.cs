@@ -13,6 +13,13 @@ public class UnsplashStockRepository : IImageStockRepository
     private readonly ILogger<UnsplashStockRepository> _logger;
 
     private const string UnsplashPhotoPagePrefix = "https://unsplash.com/photos/";
+    private readonly string[] _topics = [
+        "nature",
+        "3d-renders",
+        "textures-patterns",
+        "travel",
+        "architecture-interior",
+        "street-photography"];
 
     public UnsplashStockRepository(
         IUnsplashApiClient apiClient,
@@ -25,7 +32,7 @@ public class UnsplashStockRepository : IImageStockRepository
     public async Task<StockImage> GetNextImage(CancellationToken cancellationToken)
     {
         var request = new GetRandomPhoto.Request(
-            Topics: ["wallpapers"],
+            Topics: ["nature"],
             Orientation: Orientation.Portrait);
 
         var response = await _apiClient.GetRandomPhotos(request, cancellationToken);
@@ -33,7 +40,7 @@ public class UnsplashStockRepository : IImageStockRepository
 
         _logger.LogInformation("Got random photo with id {imageId}", photo.Id);
 
-        return new StockImage(photo.Id, photo.Urls.Full, UnsplashPhotoPagePrefix + photo.Id);
+        return new StockImage(photo.Id, photo.Urls.Small, UnsplashPhotoPagePrefix + photo.Id);
     }
 
     public async Task MarkAsDownloaded(string imageId, CancellationToken cancellationToken)
