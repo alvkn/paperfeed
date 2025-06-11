@@ -6,16 +6,16 @@ namespace PaperFeed;
 public class PostingJob : BackgroundService
 {
     private readonly ILogger<PostingJob> _logger;
-    private readonly IServiceProvider _serviceProvider;
+    private readonly IServiceScopeFactory _serviceScopeFactory;
     private readonly int _intervalInMinutes;
 
     public PostingJob(
         ILogger<PostingJob> logger,
         IOptions<BotSettings> botSettings,
-        IServiceProvider serviceProvider)
+        IServiceScopeFactory serviceScopeFactory)
     {
         _logger = logger;
-        _serviceProvider = serviceProvider;
+        _serviceScopeFactory = serviceScopeFactory;
         _intervalInMinutes = botSettings.Value.IntervalInMinutes;
     }
 
@@ -26,7 +26,7 @@ public class PostingJob : BackgroundService
         while (!cancellationToken.IsCancellationRequested)
         {
             _logger.LogInformation("Executing scheduled task at {dateTime}", DateTime.UtcNow);
-            using (var scope = _serviceProvider.CreateScope())
+            using (var scope = _serviceScopeFactory.CreateScope())
             {
                 var processingService = scope.ServiceProvider.GetRequiredService<IImagePublisherService>();
                 await processingService.PublishNextImage(cancellationToken);

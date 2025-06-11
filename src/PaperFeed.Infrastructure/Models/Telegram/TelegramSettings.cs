@@ -8,4 +8,6 @@ public class TelegramSettings
 
     public int LocalApiServerPort { get; init; }
 
+    public bool UseOfficialApi { get; init; }
+
 }
