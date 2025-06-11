@@ -27,7 +27,12 @@ public static class DependencyInjectionExtensions
         services.AddSingleton<ITelegramBotClient>(sp =>
         {
             var settings = sp.GetRequiredService<IOptions<TelegramSettings>>().Value;
-            return new TelegramBotClient(settings.BotToken);
+
+            var options = new TelegramBotClientOptions(
+                settings.BotToken,
+                "http://localhost:" + settings.LocalApiServerPort);
+
+            return new TelegramBotClient(options);
         });
 
         services.AddHttpClient();
