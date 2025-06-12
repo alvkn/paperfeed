@@ -20,8 +20,7 @@ public class UnsplashStockRepository : IImageStockRepository
         "3d-renders",
         "textures-patterns",
         "travel",
-        "architecture-interior",
-        "street-photography"
+        "architecture-interior"
     ];
 
     public UnsplashStockRepository(
@@ -43,7 +42,7 @@ public class UnsplashStockRepository : IImageStockRepository
 
         _logger.LogInformation("Got random photo with id {imageId}", photo.Id);
 
-        return new StockImage(photo.Id, photo.Urls.Full, photo.Urls.Small, UnsplashPhotoPagePrefix + photo.Id);
+        return new StockImage(photo.Id, photo.Urls.Raw, photo.Urls.Regular, UnsplashPhotoPagePrefix + photo.Id);
     }
 
     public async Task MarkAsDownloaded(string imageId, CancellationToken cancellationToken)

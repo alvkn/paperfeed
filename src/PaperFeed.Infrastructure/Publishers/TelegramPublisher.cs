@@ -33,7 +33,7 @@ public class TelegramPublisher : ISocialPublisher
             {
                 case PreviewImage previewImage:
                     await SendImageAsPhoto(
-                        previewImage.Content,
+                        previewImage.PreviewUrl,
                         previewImage.StockPageUrl,
                         previewImage.Caption,
                         previewImage.CaptionAsLink);
@@ -46,7 +46,7 @@ public class TelegramPublisher : ISocialPublisher
     }
 
     private async Task SendImageAsPhoto(
-        byte[] imageBytes,
+        string previewUrl,
         string stockPageUrl,
         string caption,
         bool captionAsLink)
@@ -56,11 +56,9 @@ public class TelegramPublisher : ISocialPublisher
             caption = $"[{caption}]({stockPageUrl})";
         }
 
-        using var memoryStream = new MemoryStream(imageBytes);
-
         await _botClient.SendPhoto(
             chatId: new ChatId(_settings.Value.ChannelId),
-            photo: InputFile.FromStream(memoryStream),
+            photo: InputFile.FromUri(previewUrl),
             caption: caption,
             parseMode: ParseMode.MarkdownV2);
 
