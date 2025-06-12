@@ -8,5 +8,7 @@ public class PreviewImage : PostImage
 
     public required string StockPageUrl { get; init; }
 
+    public required string PreviewUrl { get; init; }
+
     public bool CaptionAsLink { get; init; } = true;
 }

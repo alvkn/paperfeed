@@ -7,7 +7,4 @@ public class TelegramSettings
     public long ChannelId { get; init; }
 
     public int LocalApiServerPort { get; init; }
-
-    public bool UseOfficialApi { get; init; }
-
 }

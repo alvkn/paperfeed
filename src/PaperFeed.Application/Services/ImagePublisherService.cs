@@ -52,7 +52,8 @@ public class ImagePublisherService : IImagePublisherService
                     Caption = "source",
                     Id = sourceImage.Id,
                     StockPageUrl = sourceImage.StockPageUrl,
-                    Content = imageFile.Content
+                    Content = imageFile.Content,
+                    PreviewUrl = sourceImage.PreviewUrl
                 },
                 new OriginalImage
                 {
