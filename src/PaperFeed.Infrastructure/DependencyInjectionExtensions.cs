@@ -36,9 +36,18 @@ public static class DependencyInjectionExtensions
         {
             var options = sp.GetRequiredService<IOptions<UnsplashSettings>>().Value;
 
-            client.BaseAddress = new Uri(options.BaseUrl);
+            client.BaseAddress = new Uri(options.BaseApiUrl);
             client.DefaultRequestHeaders.Add("Accept-Version", "v1");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Client-ID", options.AccessKey);
+        });
+
+        services.AddHttpClient<IUnsplashHttpScrapper, UnsplashHttpScrapper>((sp, client) =>
+        {
+            var options = sp.GetRequiredService<IOptions<UnsplashSettings>>().Value;
+
+            client.BaseAddress = new Uri(options.BasePortalUrl);
+            client.DefaultRequestHeaders.UserAgent.TryParseAdd(
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36");
         });
 
         services.AddSingleton<ISocialPublisher, TelegramPublisher>();

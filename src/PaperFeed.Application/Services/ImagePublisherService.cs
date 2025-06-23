@@ -87,6 +87,12 @@ public class ImagePublisherService : IImagePublisherService
             {
                 var candidate = await _imageStockRepository.GetNextImage(ct);
 
+                if (candidate is null)
+                {
+                    _logger.LogInformation("Failed to find next image, retrying");
+                    return null;
+                }
+
                 if (await _postedImageRepository.IsAlreadyPosted(candidate.Id, ct))
                 {
                     _logger.LogInformation("Photo with image id {imageId} is already posted", candidate.Id);

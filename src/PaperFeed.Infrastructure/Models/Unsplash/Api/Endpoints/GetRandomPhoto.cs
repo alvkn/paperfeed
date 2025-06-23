@@ -12,7 +12,7 @@ public abstract class GetRandomPhoto
         string Username = "",
         string Query = "",
         ContentFilter ContentFilter = ContentFilter.Low,
-        int Count = 1);
+        int? Count = null);
 
     [UsedImplicitly]
     public class Response
